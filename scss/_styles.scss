@@ -1,0 +1,516 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+}
+main {
+  width: 100%;
+  margin: auto;
+  position: relative;
+  @include media(">=980px") {
+    width: 980px;
+    margin: auto;
+  }
+  @include media(">=1024px") {
+    width: 1024px;
+    margin: auto;
+  }
+}
+.header {
+  background: $OuterSpace;
+  width: 100%;
+  height: 97px;
+  display: flex;
+  align-items: center;
+  color: $textColor;
+  height: 37px;
+  margin: auto;
+  @include media(">=640px") {
+    height: 71px;
+  }
+  @include media(">=980px") {
+    height: 97px;
+  }
+}
+.nav-text {
+  color: $textColor;
+  padding-left: 19px;
+  font-size: 15px;
+  @include media(">=640px") {
+    font-size: 25px;
+  }
+}
+.desctop-hidden {
+  @include media(">=980px") {
+    display: none;
+  }
+}
+.mobile-hidden {
+  display: none;
+  @include media(">=980px") {
+    display: block;
+  }
+}
+.main-nav input[type="checkbox"] {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+}
+.main-nav input[type="checkbox"]:checked ~ ul {
+  transform: none;
+}
+.main-nav ul.nav {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100vh;
+  background: $OuterSpace;
+  z-index: 10;
+  width: 100%;
+  align-items: center;
+  padding-top: 50px;
+  transform: translate(0, -110vh);
+  transition: transform 1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  & > li {
+    position: relative;
+    margin-bottom: 70px;
+    height: 97px;
+    display: flex;
+    align-items: center;
+    a {
+      font-size: 15px;
+      color: $textColor;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    & > ul {
+      position: absolute;
+      left: -40px;
+      top: 100%;
+      background: $Mandy;
+      display: none;
+      width: 149px;
+      .triangle-up {
+        position: relative;
+        left: calc(50% - 5px);
+        bottom: 28px;
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid $Mandy;
+      }
+      & > li {
+        padding-bottom: 21px;
+        padding-left: 6px;
+        padding-right: 8px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        & > a {
+          font-size: 14px;
+          font-family: "Open Sans", sans-serif;
+          color: $White;
+        }
+        div {
+          position: absolute;
+          top: -24px;
+          left: 100%;
+          width: 159px;
+          height: 145px;
+          display: none;
+          ul {
+            margin-left: 10px;
+            height: 100%;
+            background: $Mandy;
+            li {
+              padding: 10px 14px 0;
+              a {
+                font-size: 14px;
+
+                font-family: "Open Sans", sans-serif;
+                color: $White;
+              }
+            }
+          }
+          .triangle-left {
+            position: relative;
+            top: 29px;
+            right: 2px;
+            width: 0;
+            height: 0;
+            display: block;
+            border: 6px solid transparent;
+            border-right: 6px solid $Mandy;
+          }
+        }
+        &:hover {
+          div {
+            display: block;
+          }
+        }
+      }
+    }
+    &:hover {
+      & > ul {
+        display: block;
+      }
+      @include media("<=980px") {
+        & > ul {
+          display: none;
+        }
+      }
+    }
+  }
+  @include media(">=980px") {
+    flex-direction: row;
+    transform: none;
+    height: 97px;
+    padding-top: 0;
+    background: none;
+    padding-left: 50px;
+    li {
+      font-size: 20px;
+      margin-bottom: 0;
+      padding-right: 30px;
+    }
+    a {
+      color: $textColor;
+      text-decoration: none;
+      font-size: 15px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.main-nav input[type="checkbox"]:checked ~ ul {
+  transform: none;
+}
+.burger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: $Shark;
+  z-index: 12;
+  width: 37px;
+  height: 37px;
+  @include media(">=640px") {
+    width: 80px;
+    height: 71px;
+  }
+  @include media(">=980px") {
+    display: none;
+  }
+  span {
+    background: #fff;
+    position: absolute;
+    width: 17px;
+    height: 2px;
+    top: 13px;
+    right: 9px;
+    &:hover {
+      cursor: pointer;
+    }
+    @include media(">=640px") {
+      width: 32px;
+      height: 4px;
+      top: 24px;
+      right: 22px;
+    }
+  }
+}
+.burger span:nth-child(2) {
+  top: 17px;
+  @include media(">=640px") {
+    top: 32px;
+  }
+}
+.burger span:last-child {
+  top: 21px;
+  @include media(">=640px") {
+    top: 40px;
+  }
+}
+.main-nav input[type="checkbox"]:checked ~ label span:first-child {
+  transform: rotate(-135deg);
+  top: 18px;
+  left: 3px;
+  width: 33px;
+  background: #fff;
+  @include media(">=640px") {
+    width: 60px;
+    top: 33px;
+    left: 7px;
+  }
+}
+.main-nav input[type="checkbox"]:checked ~ label span:last-child {
+  transform: rotate(135deg);
+  top: 18px;
+  left: 3px;
+  width: 33px;
+  background: #fff;
+  @include media(">=640px") {
+    width: 60px;
+    top: 33px;
+    left: 7px;
+  }
+}
+.main-nav input[type="checkbox"]:checked ~ label span:nth-child(2) {
+  opacity: 0;
+}
+.intro {
+  height: 175px;
+  width: 100%;
+  background: linear-gradient(135deg, #7db9e8 0%, #19b4c6 0%, #078aa4 100%);
+  display: flex;
+  flex-direction: column;
+  @include media(">=640px") {
+    height: 350px;
+  }
+  @include media(">=980px") {
+    height: 550px;
+  }
+  @include media(">=1024px") {
+    height: 577px;
+  }
+  h1 {
+    @include intro(22px, 60px, 25px, 21px);
+    color: $White;
+    font-weight: bold;
+    padding-bottom: 20px;
+    line-height: 21px;
+    @include media(">=640px") {
+      @include intro(39px, 108px, 36px, 43px);
+    }
+    @include media(">=980px") {
+      @include intro(61px, 180px, 78px, 65px);
+    }
+    @include media(">=1024px") {
+      @include intro(61px, 193px, 83px, 67px);
+    }
+  }
+}
+.link {
+  width: 277px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include media(">=640px") {
+    margin-top: 12px;
+    width: 480px;
+  }
+  @include media(">=980px") {
+    margin-top: 24px;
+    width: 770px;
+  }
+  @include media(">=1024px") {
+    margin-top: 28px;
+    width: 780px;
+  }
+  a {
+    color: $textColor;
+    opacity: 50%;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: 25px;
+    &:hover {
+      text-decoration: underline;
+    }
+    @include media(">=640px") {
+      font-size: 21px;
+      padding-left: 36px;
+    }
+    @include media(">=980px") {
+      font-size: 36px;
+      padding-left: 77px;
+    }
+    @include media(">=1024px") {
+      font-size: 36px;
+      padding-left: 83px;
+    }
+  }
+  span {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .icon-right-arrow:before {
+    content: "\e906";
+    color: $White;
+    font-size: 13px;
+    @include media(">=640px") {
+      font-size: 16px;
+    }
+    @include media(">=980px") {
+      font-size: 25px;
+    }
+  }
+}
+.slider {
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  @include media(">=640px") {
+    height: 150px;
+  }
+  @include media(">=980px") {
+    height: 234px;
+  }
+  @include media(">=1024px") {
+    height: 245px;
+  }
+  .txt {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 26px;
+    flex-basis: 75%;
+    font-weight: bold;
+    background: $BalticSea;
+    h2 {
+      font-size: 11px;
+      font-weight: bold;
+      color: $White;
+      opacity: 50%;
+      @include media(">=640px") {
+        font-size: 20px;
+        padding-left: 12px;
+      }
+      @include media(">=980px") {
+        font-size: 27px;
+        padding-left: 54px;
+      }
+      @include media(">=1024px") {
+        font-size: 27px;
+        padding-left: 60px;
+      }
+    }
+  }
+  span {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 25%;
+    background: $MediumRedViolet;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .icon-right-arrow:before {
+    content: "\e906";
+    color: $White;
+    font-size: 14px;
+    @include media(">=640px") {
+      font-size: 25px;
+    }
+    @include media(">=980px") {
+      font-size: 35px;
+    }
+  }
+}
+.gallery {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @include media(">=980px") {
+    flex-direction: row;
+    height: 283px;
+  }
+  @include media(">=1024px") {
+    height: 295px;
+  }
+  span {
+    height: 275px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $BlueGem;
+    &:hover {
+      cursor: pointer;
+    }
+    @include media(">=640px") {
+      height: 553px;
+    }
+    @include media(">=980px") {
+      height: 100%;
+      flex-basis: 33%;
+    }
+  }
+  .icon-right-arrow:before {
+    content: "\e906";
+    color: $White;
+    font-size: 28px;
+    @include media(">=640px") {
+      font-size: 55px;
+    }
+  }
+}
+.content {
+  background: $Gallery;
+  padding: 35px;
+  @include media(">=640px") {
+    padding-left: 57px;
+    padding-right: 57px;
+  }
+  @include media(">=980px") {
+    padding-left: 76px;
+  }
+  .website {
+    padding-bottom: 20px;
+    @include media(">=640px") {
+      padding-top: 60px;
+      padding-bottom: 44px;
+    }
+    @include media(">=980px") {
+      padding-top: 30px;
+      padding-bottom: 20px;
+    }
+    @include media(">=1024px") {
+      padding-top: 18px;
+      padding-bottom: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: $BlueChill;
+      font-weight: bold;
+      font-size: 20px;
+      &:hover {
+        text-decoration: underline;
+      }
+      @include media(">=640px") {
+        font-size: 29px;
+      }
+    }
+  }
+  .text-content p {
+    color: $Emperor;
+    font-size: 14px;
+    margin-bottom: 40px;
+    line-height: 20px;
+    @include media(">=640px") {
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 70px;
+      line-height: 43px;
+    }
+    @include media(">=980px") {
+      font-size: 14px;
+      columns: 370px 2;
+      column-gap: 74px;
+      margin-bottom: 31px;
+      line-height: 26px;
+    }
+  }
+}

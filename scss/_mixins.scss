@@ -1,0 +1,6 @@
+@mixin intro($fs, $pt, $pl, $lh) {
+  font-size: $fs;
+  padding-top: $pt;
+  padding-left: $pl;
+  line-height: $lh;
+}
